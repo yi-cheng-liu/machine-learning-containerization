@@ -1,5 +1,7 @@
 FROM jupyter/scipy-notebook
 
+WORKDIR /mydata
+
 RUN pip install joblib
 
 COPY train.csv ./train.csv
