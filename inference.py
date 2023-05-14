@@ -13,21 +13,13 @@ import numpy as np
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.neural_network import MLPClassifier
 import pandas as pd
-from joblib import load
+from joblib import dump, load
 from sklearn import preprocessing
-
-
 
 def inference():
 
-    MODEL_DIR = os.environ["MODEL_DIR"]
-    MODEL_FILE_LDA = os.environ["MODEL_FILE_LDA"]
-    MODEL_FILE_NN = os.environ["MODEL_FILE_NN"]
-    MODEL_PATH_LDA = os.path.join(MODEL_DIR, MODEL_FILE_LDA)
-    MODEL_PATH_NN = os.path.join(MODEL_DIR, MODEL_FILE_NN)
-        
     # Load, read and normalize training data
-    testing = "test.csv"
+    testing = "./test.csv"
     data_test = pd.read_csv(testing)
         
     y_test = data_test['# Letter'].values
@@ -43,18 +35,16 @@ def inference():
     # Models training
     
     # Run model
-    print(MODEL_PATH_LDA)
-    clf_lda = load(MODEL_PATH_LDA)
+    clf_lda = load('Inference_lda.joblib')
     print("LDA score and classification:")
     print(clf_lda.score(X_test, y_test))
     print(clf_lda.predict(X_test))
         
     # Run model
-    clf_nn = load(MODEL_PATH_NN)
+    clf_nn = load('Inference_NN.joblib')
     print("NN score and classification:")
     print(clf_nn.score(X_test, y_test))
     print(clf_nn.predict(X_test))
-    
     
 if __name__ == '__main__':
     inference()
