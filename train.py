@@ -44,7 +44,7 @@ def train():
     clf_lda = LinearDiscriminantAnalysis()
     clf_lda.fit(X_train, y_train)
     
-     # Save model
+    # Save model
     from joblib import dump
     dump(clf_lda, MODEL_PATH_LDA)
         
@@ -53,7 +53,7 @@ def train():
     clf_NN.fit(X_train, y_train)
        
     # Record model
-    from joblib import dump, load
+    from joblib import dump
     dump(clf_NN, MODEL_PATH_NN)
         
 if __name__ == '__main__':
