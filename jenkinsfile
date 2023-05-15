@@ -1,7 +1,7 @@
 pipeline {
     environment {
-        imagename = "docker-ml-model"
-        registryCredential = 'dockerhub-credentials'
+        imagename = "jerryliuhaha/docker-ml-model3"
+        registryCredential = 'jerryliuhaha-docckerhub'
         dockerImage = ''
     }
     agent any
