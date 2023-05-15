@@ -53,7 +53,6 @@ def train():
     clf_NN.fit(X_train, y_train)
        
     # Record model
-    from joblib import dump
     dump(clf_NN, MODEL_PATH_NN)
         
 if __name__ == '__main__':
