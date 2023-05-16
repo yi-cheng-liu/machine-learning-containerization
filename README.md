@@ -1,12 +1,25 @@
-# Build and Run a Docker Container for your Machine Learning Model
+# Build and Run a Docker Container for Machine Learning Model
 
-The idea is to do a quick and easy build of a Docker container with a simple machine learning model and run it. In order to start building a Docker container for a machine learning model, let’s consider three files: 
--	Dockerfile
--	train.py
--	inference.py
+## 🎯 Goal
+The concept involves creating a Docker container for a basic machine learning model in a straightforward and effortless manner. To embark on this, we'll focus on three essential files:
 
-The train.py is  a python script that ingest and normalize EEG data in a csv file (train.csv) and train two models to classify the data (using scikit-learn). The script saves two models: Linear Discriminant Analysis (clf_lda) and Neural Networks multi-layer perceptron (clf_NN). 
+- Dockerfile
+- train.py
+- inference.py
 
-The inference.py will be called to perform batch inference by loading the two models that has been previously created. The application will normalize new EEG data coming from a csv file (test.csv), perform inference on the dataset and print the classification accuracy and predictions. 
+The `train.py` is a Python script responsible for processing and standardizing EEG data from a CSV file (train.csv), and then training two classification models using scikit-learn. It saves two different models: one based on **Linear Discriminant Analysis** (clf_lda) and another based on a **multi-layer perceptron Neural Network** (clf_NN).
 
-Read the complete post:  https://xaviervasques.medium.com/build-and-run-a-docker-container-for-your-machine-learning-model-60209c2d7a7f
+`inference.py` is designed for batch inference. It loads the previously created models and uses them to classify new EEG data, which is normalized and fed from another CSV file (test.csv). The script then proceeds to compute the classification accuracy and predictions, providing an overview of the model's performance.
+
+## 🛠️ Build the image and the container
+
+Building the image
+```
+docker build -t docker-ml-model -f Dockerfile .
+```
+
+Perform the inference on new data (test.csv)
+```
+docker run docker-ml-model python3 inference.py
+```
+
