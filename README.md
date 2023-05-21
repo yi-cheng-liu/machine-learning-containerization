@@ -13,7 +13,17 @@ The `train.py` is a Python script responsible for processing and standardizing E
 
 ## 🛠️ Build the image and the container
 
-Building the image
+Basic docker commands
+```
+docker build - build a new image 
+  -t tag 
+  -f specify the path to the Dockerfile(in the current directory)
+docker run <container> - run a container
+  - python intepreter
+  - inference.py the file that is running
+```
+
+Building the image 
 ```
 docker build -t docker-ml-model -f Dockerfile .
 ```
